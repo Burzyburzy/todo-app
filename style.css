@@ -1,3 +1,9 @@
 body {
   background-color: pink;
 }
+h1 {
+  font-family: 'Ovo', serif;
+}
+p {
+  font-family: 'Muli', sans-serif;
+}
