@@ -31,7 +31,7 @@ var todoList = {
       // Case1: If everything's true, make everything false
       if (completedTodos == totalTodos) {
         todo.completed = false;
-      // Case2: Otherwise, make everything true
+        // Case2: Otherwise, make everything true
       } else {
         todo.completed = true;
       }
@@ -117,3 +117,16 @@ var view = {
 }
 
 view.setupEventListeners();
+
+//using enter to trigger a button click
+document.getElementById("addTodoTextInput")
+  .addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode == 13) {
+      if (document.getElementById("addTodoTextInput").value === "") {
+        return false; //it returns false only if there's nothing in the input - returns a todo when there's " "
+      } else {
+        document.getElementById("addTodoButton").click();
+      }
+    }
+  });
