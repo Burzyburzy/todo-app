@@ -118,7 +118,7 @@ var view = {
 
 view.setupEventListeners();
 
-//using enter to trigger a button click
+//using 'enter' to trigger the add todo button
 document.getElementById("addTodoTextInput")
   .addEventListener("keyup", function(event) {
     event.preventDefault();
@@ -127,6 +127,19 @@ document.getElementById("addTodoTextInput")
         return false; //it returns false only if there's nothing in the input - returns a todo when there's " "
       } else {
         document.getElementById("addTodoButton").click();
+      }
+    }
+  });
+
+//using 'enter' to trigger the change todo button
+document.getElementById("changeTodoTextInput")
+  .addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode == 13) {
+      if (document.getElementById("changeTodoTextInput").value === "") {
+        return false; //it returns false only if there's nothing in the input - returns a todo when there's " "
+      } else {
+        document.getElementById("changeTodoButton").click();
       }
     }
   });
