@@ -118,6 +118,25 @@ var view = {
 
 view.setupEventListeners();
 
+
+// //testing version
+// function checkForInput (){
+//   var addTodoTextInput = document.getElementById("addTodoTextInput").value;
+//   var addTodoButton = document.getElementById("addTodoButton").value;
+//
+//     .addEventListener("keyup", function(event) {
+//       event.preventDefault();
+//       if (event.keyCode == 13) {
+//         if (addTodoTextInput.length > 0) {
+//           addTodoButton.click();
+//         } else {
+//           return false; //it returns false only if there's nothing in the input - returns a todo when there's " "
+//         }
+//       }
+//     });
+// }
+
+
 //using 'enter' to trigger the add todo button
 document.getElementById("addTodoTextInput")
   .addEventListener("keyup", function(event) {

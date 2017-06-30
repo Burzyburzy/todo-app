@@ -2,10 +2,12 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background-color: pink;
+  background-color: #f9f9f9;
 }
 h1 {
-  font-family: 'Ovo', serif;
+  font-family: 'Roboto', sans-serif; /*Ovo, serif is loaded in the source as well*/
+  color: #393E41; /*03a9f4 works as well*/
+  border-bottom: 1px solid #393E41;
 }
 p {
   font-family: 'Muli', sans-serif;
