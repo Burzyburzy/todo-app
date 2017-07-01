@@ -4,14 +4,12 @@ body {
   height: 100%;
   background-color: #f9f9f9;
 }
-h1 {
-  font-family: 'Roboto', sans-serif; /*Ovo, serif is loaded in the source as well*/
-  color: #393E41; /*03a9f4 works as well*/
-  border-bottom: 1px solid #393E41;
-}
-p {
-  font-family: 'Muli', sans-serif;
-}
-button {
 
+#taskIsEmpty {
+  font-family: 'Roboto', sans-serif;
+  /*Ovo, serif is loaded in the source as well*/
+  color: #393E41;
+  /*03a9f4 works as well*/
 }
+
+button {}

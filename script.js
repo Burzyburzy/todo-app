@@ -42,9 +42,15 @@ var todoList = {
 var handlers = {
   addTodo: function() {
     var addTodoTextInput = document.getElementById("addTodoTextInput");
-    todoList.addTodos(addTodoTextInput.value);
-    addTodoTextInput.value = "";
-    view.displayTodos();
+    if (addTodoTextInput.value === "") { //info o braku todo
+      var alert = document.getElementById('taskIsEmpty');
+      alert.innerHTML = "Can't add an empty task";
+    } else {
+      todoList.addTodos(addTodoTextInput.value);
+      addTodoTextInput.value = "";
+      var clearAlert = document.getElementById('taskIsEmpty').innerHTML = "";
+      view.displayTodos();
+    }
   },
   changeTodo: function() {
     var changeTodoPositionInput = document.getElementById('changeTodoPositionInput');
@@ -118,45 +124,27 @@ var view = {
 
 view.setupEventListeners();
 
-
-// //testing version
-// function checkForInput (){
-//   var addTodoTextInput = document.getElementById("addTodoTextInput").value;
-//   var addTodoButton = document.getElementById("addTodoButton").value;
-//
-//     .addEventListener("keyup", function(event) {
-//       event.preventDefault();
-//       if (event.keyCode == 13) {
-//         if (addTodoTextInput.length > 0) {
-//           addTodoButton.click();
-//         } else {
-//           return false; //it returns false only if there's nothing in the input - returns a todo when there's " "
-//         }
-//       }
-//     });
-// }
-
-
-//using 'enter' to trigger the add todo button
+//using 'enter' to trigger addTodoTextInput button
+//returns false only if there's nothing in the input
 document.getElementById("addTodoTextInput")
   .addEventListener("keyup", function(event) {
     event.preventDefault();
     if (event.keyCode == 13) {
       if (document.getElementById("addTodoTextInput").value === "") {
-        return false; //it returns false only if there's nothing in the input - returns a todo when there's " "
+        var alert = document.getElementById('taskIsEmpty').innerHTML = "Can't add an empty task";
       } else {
         document.getElementById("addTodoButton").click();
       }
     }
   });
 
-//using 'enter' to trigger the change todo button
+//using 'enter' to trigger changeTodoTextInput button
 document.getElementById("changeTodoTextInput")
   .addEventListener("keyup", function(event) {
     event.preventDefault();
     if (event.keyCode == 13) {
       if (document.getElementById("changeTodoTextInput").value === "") {
-        return false; //it returns false only if there's nothing in the input - returns a todo when there's " "
+        return false;
       } else {
         document.getElementById("changeTodoButton").click();
       }
