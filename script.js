@@ -87,10 +87,10 @@ var view = {
                                                       // forEach = funkcja wyższego rzędu
       if (todo.completed === true) {
         todoTextWithCompletion = "(x) " + todo.todoText;
-        //stworz checkbox z wartoscia checked = true;
+        //stworz checkbox z wartoscia .checked = true;
       } else {
         todoTextWithCompletion = "( ) " + todo.todoText;
-        //stworz checkbox z wartoscia checked = false;
+        //stworz checkbox z wartoscia .checked = false;
       }
 
       todoLi.id = position;
