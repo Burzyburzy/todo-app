@@ -42,13 +42,13 @@ var todoList = {
 var handlers = {
   addTodo: function() {
     var addTodoTextInput = document.getElementById("addTodoTextInput");
-    if (addTodoTextInput.value === "") { //info o braku todo
+    if (addTodoTextInput.value === "") { //runs when no todo is added
       var alert = document.getElementById('taskIsEmpty');
       alert.innerHTML = "Can't add an empty task";
     } else {
+      var clearAlert = document.getElementById('taskIsEmpty').innerHTML = "";
       todoList.addTodos(addTodoTextInput.value);
       addTodoTextInput.value = "";
-      var clearAlert = document.getElementById('taskIsEmpty').innerHTML = "";
       view.displayTodos();
     }
   },
@@ -81,21 +81,24 @@ var view = {
     var todosUl = document.querySelector('ul');
     todosUl.innerHTML = "";
 
-    todoList.todos.forEach(function(todo, position) {
-      var todoLi = document.createElement('li');
-      var todoTextWithCompletion = "";
-
+    todoList.todos.forEach(function(todo, position) { //forEach wykonuje funkcję jednokrotnie
+      var todoLi = document.createElement('li');      // dla każdego elementu tablicy
+      var todoTextWithCompletion = "";                // funkcja wykonywana = callback
+                                                      // forEach = funkcja wyższego rzędu
       if (todo.completed === true) {
         todoTextWithCompletion = "(x) " + todo.todoText;
+        //stworz checkbox z wartoscia checked = true;
       } else {
         todoTextWithCompletion = "( ) " + todo.todoText;
+        //stworz checkbox z wartoscia checked = false;
       }
 
       todoLi.id = position;
       todoLi.textContent = todoTextWithCompletion;
       todoLi.appendChild(this.createDeleteButton());
+      //todoLi.appendChild(this.createCheckbox());
       todosUl.appendChild(todoLi);
-    }, this);
+    }, this);                                         //funkcja kończy się tu
     // 'this' is passed to forEach to ensure the context from the view object is passed to the
     // callback function. The callback function is not a method on the view object
   },
@@ -105,6 +108,11 @@ var view = {
     deleteButton.className = "deleteButton";
     return deleteButton;
   },
+  // createCheckbox: function(){
+  //   var checkbox = document.createElement('input');
+  //   checkbox.type: "checkbox";
+  //   return checkbox;
+  // },
   setupEventListeners: function() {
     var todosUl = document.querySelector('ul');
 
