@@ -67,12 +67,21 @@ var handlers = {
   toggleCompleted: function() {
     var toggleCompletedPositionInput = document.getElementById('toggleCompletedPositionInput');
     todoList.toggleCompleted(toggleCompletedPositionInput.valueAsNumber);
+    //get checkbox
+    //toggle checkbox on click
     toggleCompletedPositionInput.value = "";
     view.displayTodos();
   },
   toggleAll: function() {
     todoList.toggleAll();
     view.displayTodos();
+  },
+  deleteAll: function() {
+    var todosUl = document.querySelector("ul");
+    var result = confirm("Delete for sure?");
+    if (result) {
+      todosUl.innerHTML = "";
+    }
   }
 };
 
@@ -82,23 +91,25 @@ var view = {
     todosUl.innerHTML = "";
 
     todoList.todos.forEach(function(todo, position) { //forEach wykonuje funkcję jednokrotnie
-      var todoLi = document.createElement('li');      // dla każdego elementu tablicy
-      var todoTextWithCompletion = "";                // funkcja wykonywana = callback
-                                                      // forEach = funkcja wyższego rzędu
+      var todoLi = document.createElement('li'); // dla każdego elementu tablicy
+      var todoTextWithCompletion = ""; // funkcja wykonywana = callback
+      // forEach = funkcja wyższego rzędu
       if (todo.completed === true) {
         todoTextWithCompletion = "(x) " + todo.todoText;
         //stworz checkbox z wartoscia .checked = true;
+        // + document.getElementsByClassName("checkbox").checked = true;
       } else {
         todoTextWithCompletion = "( ) " + todo.todoText;
         //stworz checkbox z wartoscia .checked = false;
+        // + document.getElementsByClassName("checkbox").checked=false;
       }
 
       todoLi.id = position;
       todoLi.textContent = todoTextWithCompletion;
       todoLi.appendChild(this.createDeleteButton());
-      //todoLi.appendChild(this.createCheckbox());
+      todoLi.appendChild(this.createCheckbox());
       todosUl.appendChild(todoLi);
-    }, this);                                         //funkcja kończy się tu
+    }, this); //funkcja kończy się tu
     // 'this' is passed to forEach to ensure the context from the view object is passed to the
     // callback function. The callback function is not a method on the view object
   },
@@ -108,11 +119,12 @@ var view = {
     deleteButton.className = "deleteButton";
     return deleteButton;
   },
-  // createCheckbox: function(){
-  //   var checkbox = document.createElement('input');
-  //   checkbox.type: "checkbox";
-  //   return checkbox;
-  // },
+  createCheckbox: function() {
+    var checkbox = document.createElement('input');
+    checkbox.type = "checkbox";
+    checkbox.className = "checkbox";
+    return checkbox;
+  },
   setupEventListeners: function() {
     var todosUl = document.querySelector('ul');
 
