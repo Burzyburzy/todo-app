@@ -67,7 +67,7 @@ var handlers = {
   toggleCompleted: function() {
     var toggleCompletedPositionInput = document.getElementById('toggleCompletedPositionInput');
     todoList.toggleCompleted(toggleCompletedPositionInput.valueAsNumber);
-    //get checkbox
+    //get checkbox by class
     //toggle checkbox on click
     toggleCompletedPositionInput.value = "";
     view.displayTodos();
@@ -80,8 +80,19 @@ var handlers = {
     var todosUl = document.querySelector("ul");
     var result = confirm("Delete for sure?");
     if (result) {
-      todosUl.innerHTML = "";
+      while (todosUl.hasChildNodes()) {
+        todosUl.removeChild(todosUl.firstChild);
+      }
     }
+    //dont show alert when there's no todos
+    //var result = null;
+    // if (todosUl.innerHTML = !"") {
+    //   var result = confirm("Delete for sure?");
+    //  todosUl.innerHTML = "";
+    // } else {
+    //   var result = confirm("Delete for sure?");
+    //   todosUl.innerHTML = "";
+    // }
   }
 };
 
@@ -90,18 +101,18 @@ var view = {
     var todosUl = document.querySelector('ul');
     todosUl.innerHTML = "";
 
-    todoList.todos.forEach(function(todo, position) { //forEach wykonuje funkcję jednokrotnie
-      var todoLi = document.createElement('li'); // dla każdego elementu tablicy
+    todoList.todos.forEach(function(todo, position) { //forEach wykonuje funkcję jednokrotnie dla każdego elementu tablicy
+      var todoLi = document.createElement('li');
       var todoTextWithCompletion = ""; // funkcja wykonywana = callback
       // forEach = funkcja wyższego rzędu
       if (todo.completed === true) {
         todoTextWithCompletion = "(x) " + todo.todoText;
         //stworz checkbox z wartoscia .checked = true;
-        // + document.getElementsByClassName("checkbox").checked = true;
+        // document.getElementsByClassName("checkbox").checked = true;
       } else {
         todoTextWithCompletion = "( ) " + todo.todoText;
         //stworz checkbox z wartoscia .checked = false;
-        // + document.getElementsByClassName("checkbox").checked=false;
+        //document.getElementsByClassName("checkbox").checked=false;
       }
 
       todoLi.id = position;
