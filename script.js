@@ -47,7 +47,7 @@ var handlers = {
       alert.innerHTML = "Can't add an empty task";
     } else {
       var clearAlert = document.getElementById('taskIsEmpty').innerHTML = "";
-      todoList.addTodos(addTodoTextInput.value);
+      todoList.addTodos(addTodoTextInput.value + " ");
       addTodoTextInput.value = "";
       view.displayTodos();
     }
@@ -179,5 +179,14 @@ document.getElementById("changeTodoTextInput")
       } else {
         document.getElementById("changeTodoButton").click();
       }
+    }
+  });
+
+//using 'enter' to trigger toggleCompletedPositionInput
+document.getElementById("toggleCompletedPositionInput")
+  .addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode == 13) {
+      document.getElementById("toggleCompletedPositionInput").click();
     }
   });
