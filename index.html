@@ -15,40 +15,64 @@
 </head>
 
 <body>
-  <h1>Todo List</h1>
+  <div class="topBar"> <!--colour bar at the top -->
 
-  <div>
-    <button onclick="handlers.toggleAll()">Toggle All</button>
   </div>
-  <div>
-    <button onclick="handlers.deleteAll()">Delete All</button>
+  <div class="menu-container">
+    <div class="menu">
+      <!--menu will go here  -->
+    </div>
   </div>
-
-  <div>
-    <button id="addTodoButton" onclick="handlers.addTodo()">Add</button>
-    <input id="addTodoTextInput" type="text" placeholder="Title...">
-  </div>
-
-  <div>
-    <button id="changeTodoButton" onclick="handlers.changeTodo()">Change Todo</button>
-    <input id="changeTodoPositionInput" type="number" placeholder="Number...">
-    <input id="changeTodoTextInput" type="text" placeholder="Change to...">
+  <div class="header-container">
+    <div class="header">
+      <h1>Todo List</h1>
+    </div>
   </div>
 
-  <div>
-    <button onclick="handlers.toggleCompleted()">Toggle Completed</button>
-    <input id="toggleCompletedPositionInput" type="number" placeholder="Number...">
+  <div class="content-container">
+    <div class="content">
+
+      <div>
+        <button class="button" onclick="handlers.toggleAll()">Toggle All</button>
+      </div>
+      <div>
+        <button class="button" onclick="handlers.deleteAll()">Delete All</button>
+      </div>
+
+      <div>
+        <button class="button" id="addTodoButton" onclick="handlers.addTodo()">Add</button>
+        <input id="addTodoTextInput" type="text" placeholder="Title...">
+      </div>
+
+      <div>
+        <button class="button" id="changeTodoButton" onclick="handlers.changeTodo()">Change Todo</button>
+        <input id="changeTodoPositionInput" type="number" placeholder="Number...">
+        <input id="changeTodoTextInput" type="text" placeholder="Change to...">
+      </div>
+
+      <div>
+        <button class="button" onclick="handlers.toggleCompleted()">Toggle Completed</button>
+        <input id="toggleCompletedPositionInput" type="number" placeholder="Number...">
+      </div>
+
+      <h1>All Todos:</h1>
+      <div>
+        <span class="input-error" id="taskIsEmpty"><!--error message goes here--></span>
+      </div>
+      <div class="todos-container">
+        <div class="todos">
+          <ul>
+            <!--todos go here -->
+          </ul>
+        </div>
+      </div>
+
+    </div>
   </div>
 
-  <h1>All Todos:</h1>
-
-  <div>
-    <span id="taskIsEmpty"><!--error message goes here--></span>
+  <div class="footer">
+    <!--footer items will go here  -->
   </div>
-
-  <ul>
-    <!--todos go here -->
-  </ul>
 
   <script src="./script.js"></script>
 </body>

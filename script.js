@@ -88,7 +88,7 @@ var handlers = {
     //var result = null;
     // if (todosUl.innerHTML = !"") {
     //   var result = confirm("Delete for sure?");
-    //  todosUl.innerHTML = "";
+    //   todosUl.innerHTML = "";
     // } else {
     //   var result = confirm("Delete for sure?");
     //   todosUl.innerHTML = "";
@@ -108,7 +108,7 @@ var view = {
       if (todo.completed === true) {
         todoTextWithCompletion = "(x) " + todo.todoText;
         //stworz checkbox z wartoscia .checked = true;
-        // document.getElementsByClassName("checkbox").checked = true;
+        //document.getElementsByClassName("checkbox").checked = true;
       } else {
         todoTextWithCompletion = "( ) " + todo.todoText;
         //stworz checkbox z wartoscia .checked = false;
